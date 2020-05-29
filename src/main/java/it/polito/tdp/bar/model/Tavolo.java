@@ -1,40 +1,26 @@
 package it.polito.tdp.bar.model;
 
-public class Tavolo implements Comparable<Tavolo>{
+public class Tavolo {
 	
-	private int id;
-	private int numeroPosti;
-	private boolean isDisponibile;
-	/**
-	 * @param id
-	 * @param numeroPosti
-	 */
-	public Tavolo(int id, int numeroPosti) {
+	private int nPosti ;
+	private boolean occupato ;
+	
+	public Tavolo(int nPosti, boolean occupato) {
 		super();
-		this.id = id;
-		this.numeroPosti = numeroPosti;
-		this.isDisponibile= true;
+		this.nPosti = nPosti;
+		this.occupato = occupato;
 	}
-	@Override
-	public int compareTo(Tavolo o) {
-		return this.numeroPosti - o.getNumeroPosti();
+
+	public boolean isOccupato() {
+		return occupato;
 	}
-	
-	public int getNumeroPosti() {
-		
-		return this.numeroPosti;
+
+	public void setOccupato(boolean occupato) {
+		this.occupato = occupato;
 	}
-	public boolean isDisponibile() {
-		// TODO Auto-generated method stub
-		return isDisponibile;
+
+	public int getnPosti() {
+		return nPosti;
 	}
-	public void setDisponibile(boolean isDisponibile) {
-		this.isDisponibile = isDisponibile;
-	}
-	public int getId() {
-		return id;
-	}
-	
-	
 
 }

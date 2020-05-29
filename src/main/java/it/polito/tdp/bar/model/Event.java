@@ -1,61 +1,65 @@
 package it.polito.tdp.bar.model;
 
-import java.time.LocalDateTime;
+import java.time.Duration;
 import java.time.LocalTime;
 
-public class Event implements Comparable<Event>{
-	
-	public enum EventType{
-		ARRIVO_GRUPPO_CLIENTI, ABBANDONO_GRUPPO_CLIENTI
+public class Event implements Comparable<Event> {
+
+	public enum EventType {
+		ARRIVO_GRUPPO_CLIENTI, // arriva un nuovo gruppo. Verrà sistemato al tavolo, oppure al bancone, oppure
+								// abbandona
+		TAVOLO_LIBERATO, // un gruppo precedentemente posto in un tavolo esce e libera il tavolo stesso
 	}
 
-	private LocalDateTime time;
+	private Duration time; // orario di arrivo rispetto all'inizio della simulazione
 	private EventType type;
-	private int numeroPersone;
-	private int idTavolo;
-	/**
-	 * @param oraArrivoGruppo
-	 * @param type
-	 */
-	public Event(LocalDateTime oraArrivoGruppo, EventType type, int numeroPersone, int idTavolo) {
+	private int numPersone;
+	private Duration durata;
+	private double tolleranza;
+	private Tavolo tavolo;
+	
+	public Event(Duration time, EventType type, int numPersone, Duration durata, double tolleranza, Tavolo tavolo) {
 		super();
-		this.time = oraArrivoGruppo;
+		this.time = time;
 		this.type = type;
-		this.numeroPersone = numeroPersone;
-		this.idTavolo = idTavolo;
+		this.numPersone = numPersone;
+		this.durata = durata;
+		this.tolleranza = tolleranza;
+		this.tavolo = tavolo;
 	}
-	
-	
-	public LocalDateTime getTime() {
+
+	public Duration getTime() {
 		return time;
 	}
+
 	public EventType getType() {
 		return type;
 	}
-	
 
-
-	public int getNumeroPersone() {
-		return numeroPersone;
-	}
-	
-	
-
-	public int getIdTavolo() {
-		return idTavolo;
+	public int getNumPersone() {
+		return numPersone;
 	}
 
+	public Duration getDurata() {
+		return durata;
+	}
+
+	public double getTolleranza() {
+		return tolleranza;
+	}
 
 	@Override
-	public int compareTo(Event o) {
-		// TODO Auto-generated method stub
-		return this.time.compareTo(o.getTime());
+	public int compareTo(Event other) {
+		return this.time.compareTo(other.time);
 	}
-	
+
+	@Override
 	public String toString() {
-		
-		return "Ora:"+ this.time.getHour() +":"+this.time.getMinute()+" - Type: "+this.type +" - idTav: "+this.idTavolo+", numPersone: "+ this.numeroPersone;
+		return type + " [" + time + ", " + numPersone + "pp, " + durata + ", " + (int) (tolleranza * 100) + "%]";
 	}
-	
-	
+
+	public Tavolo getTavolo() {
+		return tavolo;
+	}
+
 }

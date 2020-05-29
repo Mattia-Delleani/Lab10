@@ -1,22 +1,17 @@
 package it.polito.tdp.bar.model;
 
 public class Model {
-	Simulator sim;
-	public void simula(double tolleranza) {
-		sim = new Simulator(tolleranza);
+	
+	private Simulator sim ;
+	
+	public Model() {
+		this.sim = new Simulator() ;
 	}
 	
-	
-	public String getResults() {
-		if(sim==null) {
-			
-			throw new RuntimeException("DEVI PRIMA SIMULARE!");
-		}
-		return sim.getStatistiche().toString();
+	public Statistiche simula() {
+		sim.init();
+		sim.run();
+		return sim.getStat();
 	}
-	
-	public int getNumeroEventi() {
-		
-		return sim.getNumEventi();
-	}
+
 }

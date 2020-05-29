@@ -1,47 +1,41 @@
 package it.polito.tdp.bar.model;
 
 public class Statistiche {
+	private int numClientiTot;
+	private int numClientiSoddisfatti;
+	private int numClientiInsoddisfatti;
 	
-	private int totali;
-	private int soddisfatti;
-	private int insoddisfatti;
-	/**
-	 * 
-	 */
 	public Statistiche() {
-		this.totali = 0;
-		this.insoddisfatti = 0;
-		this.soddisfatti = 0;
-	}
-	
-	public void addTotali(int num) {
-		this.totali+= num;
-	}
-	
-	public void addInsofddisfatti(int num) {
-		this.insoddisfatti+= num;
-	}
-	public void addSoddisfatti(int num) {
-		this.soddisfatti+= num;
+		super();
+		this.numClientiTot = 0;
+		this.numClientiSoddisfatti = 0;
+		this.numClientiInsoddisfatti = 0;
 	}
 
-	public int getTotali() {
-		return totali;
+	public int getNumClientiTot() {
+		return numClientiTot;
 	}
 
-	public int getSoddisfatti() {
-		return soddisfatti;
+	public void addNumClientiTot(int numClientiTot) {
+		this.numClientiTot += numClientiTot;
 	}
 
-	public int getInsoddisfatti() {
-		return insoddisfatti;
+	public int getNumClientiSoddisfatti() {
+		return numClientiSoddisfatti;
 	}
-	
-	public String toString() {
-		
-		return "Clienti totali: "+ this.totali +"\nSoddisfatti: "+this.soddisfatti +"\nInsoddisfatti: "+ this.insoddisfatti;
-	}
-	
-	
 
+	public void addNumClientiSoddisfatti(int numClientiSoddisfatti) {
+		this.numClientiSoddisfatti += numClientiSoddisfatti;
+	}
+
+	public int getNumClientiInsoddisfatti() {
+		return numClientiInsoddisfatti;
+	}
+
+	public void addNumClientiInsoddisfatti(int numClientiInsoddisfatti) {
+		this.numClientiInsoddisfatti += numClientiInsoddisfatti;
+	}
+
+	
+	
 }
