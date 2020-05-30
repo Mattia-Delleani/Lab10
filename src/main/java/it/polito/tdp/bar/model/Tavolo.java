@@ -17,7 +17,7 @@ public class Tavolo implements Comparable<Tavolo>{
 	}
 	@Override
 	public int compareTo(Tavolo o) {
-		return this.numeroPosti - o.getNumeroPosti();
+		return -(this.numeroPosti - o.getNumeroPosti());
 	}
 	
 	public int getNumeroPosti() {
